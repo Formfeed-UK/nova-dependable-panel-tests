@@ -65,6 +65,16 @@
             "pestphp/pest-plugin": true
         }
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/formfeed-uk/nova-flexible-content"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
