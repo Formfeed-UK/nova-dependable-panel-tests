@@ -15,7 +15,12 @@
         "eg2.tslint",
         "christian-kohler.path-intellisense",
         "esbenp.prettier-vscode",
-        "CoenraadS.bracket-pair-colorizer"
+        "CoenraadS.bracket-pair-colorizer",
+        "octref.vetur",
+        "bradlc.vscode-tailwindcss",
+        "bmewburn.vscode-intelephense-client",
+        "github.copilot",
+        "namesmt.blade-php"
 	],
     "settings": {
         "#terminal.integrated.shell.linux": "/bin/bash"
