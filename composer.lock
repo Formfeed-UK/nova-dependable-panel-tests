@@ -835,7 +835,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/nova-dependable-panel",
-                "reference": "5624e07d7e4426e3106457d23e39ed13f865d85b"
+                "reference": "23c2962ec3698cab5e4670c6b662a0575493f7d2"
             },
             "require": {
                 "laravel/nova": "^4.0",

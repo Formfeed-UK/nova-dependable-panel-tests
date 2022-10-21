@@ -19,3 +19,4 @@ yarn-error.log
 /.devcontainer/.env
 /public/css
 /public/js
+/public/vendor
