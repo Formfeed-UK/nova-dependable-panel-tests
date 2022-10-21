@@ -15,3 +15,5 @@ yarn-error.log
 /.idea
 /.vscode
 /.composer/cache
+/.composer/auth.json
+/.devcontainer/.env
