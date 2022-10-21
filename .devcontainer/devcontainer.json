@@ -24,7 +24,7 @@
     "forwardPorts": [80, 5432],
 
     // Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "cp .env.example .env && git submodule init && git submodule update && composer install && php artisan key:generate && php artisan storage:link && php artisan nova:install && php artisan migrate && composer update && yarn install && yarn run development",
+	"postCreateCommand": "cp .env.example .env && git submodule init && git submodule update && composer install && php artisan key:generate && php artisan storage:link && php artisan nova:install && php artisan migrate && composer update && yarn install && yarn run development && php artisan nova:user",
 	"portsAttributes": {
 		"80": {
 			"label": "HTTP"

@@ -17,3 +17,5 @@ yarn-error.log
 /.composer/cache
 /.composer/auth.json
 /.devcontainer/.env
+/public/css
+/public/js
