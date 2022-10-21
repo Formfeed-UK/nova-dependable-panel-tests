@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f34339271f5362bb865715d50330bd53",
+    "content-hash": "4b04d499fc675605531c95671641efd9",
     "packages": [
         {
             "name": "brick/math",
@@ -831,17 +831,11 @@
         },
         {
             "name": "formfeed-uk/nova-dependable-panel",
-            "version": "0.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Formfeed-UK/nova-dependable-panel.git",
-                "reference": "52033ae4cd451fb2d009155095c7ba3f3e5e1200"
-            },
+            "version": "dev-main",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Formfeed-UK/nova-dependable-panel/zipball/52033ae4cd451fb2d009155095c7ba3f3e5e1200",
-                "reference": "52033ae4cd451fb2d009155095c7ba3f3e5e1200",
-                "shasum": ""
+                "type": "path",
+                "url": "./nova-components/nova-dependable-panel",
+                "reference": "5624e07d7e4426e3106457d23e39ed13f865d85b"
             },
             "require": {
                 "laravel/nova": "^4.0",
@@ -861,7 +855,6 @@
                     "Formfeed\\DependablePanel\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -872,11 +865,10 @@
                 "nova",
                 "panel"
             ],
-            "support": {
-                "issues": "https://github.com/Formfeed-UK/nova-dependable-panel/issues",
-                "source": "https://github.com/Formfeed-UK/nova-dependable-panel/tree/0.1.3"
-            },
-            "time": "2022-10-17T20:38:32+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "formfeed-uk/nova-flexible-content",
@@ -9094,7 +9086,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "formfeed-uk/nova-dependable-panel": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
