@@ -1,0 +1,12 @@
+{
+    "config": {},
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./nova-components/*/",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
+}
