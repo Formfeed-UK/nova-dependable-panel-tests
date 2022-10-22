@@ -3,7 +3,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "./nova-components/*/",
+            "url": "./submodules/*/",
             "options": {
                 "symlink": true
             }
