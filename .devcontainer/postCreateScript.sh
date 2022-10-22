@@ -13,9 +13,7 @@ git submodule update
 composer install
 php artisan key:generate
 php artisan storage:link
-php artisan nova:install
 php artisan dusk:install
 php artisan migrate
 yarn install
 yarn run development
-php artisan nova:user
