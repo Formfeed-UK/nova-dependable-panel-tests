@@ -6,9 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "eminiarts/nova-tabs": "^2.0",
+        "formfeed-uk/nova-dependable-panel": "dev-main",
+        "formfeed-uk/nova-flexible-content": "^2.0.0",
+        "formfeed-uk/nova-theming-classes": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
+        "laravel/nova": "^4.0",
         "laravel/sanctum": "^3.0",
+        "laravel/telescope": "^4.9",
         "laravel/tinker": "^2.7",
         "predis/predis": "^1.1"
     },
