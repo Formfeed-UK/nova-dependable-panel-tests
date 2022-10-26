@@ -18,7 +18,7 @@ use Eminiarts\Tabs\Tabs;
 use Eminiarts\Tabs\Tab;
 use Eminiarts\Tabs\Traits\HasTabs;
 
-class TestTabs extends Resource {
+class TestCreationTabs extends Resource {
 
     use HasTabs;
 
@@ -55,17 +55,78 @@ class TestTabs extends Resource {
         return [
             Tabs::make(__("Test Tabs"), [
                 Tab::make('Test Tab 1', [
-                    Boolean::make("Test1 Boolean", "record_data->test4_boolean")->default(false),
+                    Boolean::make("Test1 Boolean", "record_data->test1_boolean")->default(false),
                     DependablePanel::make("Test1 Panel", [
                         Text::make("Field 1", "record_data->test1_field1")
                             ->dependsOn(["record_data->test1_boolean"], function (Text $field, NovaRequest $request, FormData $formData) {
                                 if ($formData['record_data->test1_boolean'] == true) {
-                                    $field->value = "test4_field1_changed";
+                                    $field->hide();
                                 }
                             }),
-                    ])
+                    ])->singleRequest(true),
+
+                    Boolean::make("Test2 Boolean", "record_data->test2_boolean")->default(false),
+                    DependablePanel::make("Test2 Panel", [
+                        Text::make("Field 1", "record_data->test2_field1")
+                            ->dependsOn(["record_data->test2_boolean"], function (Text $field, NovaRequest $request, FormData $formData) {
+                                if ($formData['record_data->test2_boolean'] == true) {
+                                    $field->hide();
+                                }
+                            }),
+                    ])->singleRequest(false),
+
+                    Boolean::make("Test3 Boolean", "record_data->test3_boolean")->default(false),
+                    DependablePanel::make("Test3 Panel", [
+                        Text::make("Field 1", "record_data->test3_field1"),
+                    ])->singleRequest(true)
+                        ->dependsOn(["record_data->test3_boolean"], function (DependablePanel $field, NovaRequest $request, FormData $formData) {
+                            if ($formData['record_data->test3_boolean'] == true) {
+                                $field->hide();
+                            }
+                        }),
+
+                    Boolean::make("Test4 Boolean", "record_data->test4_boolean")->default(false),
+                    DependablePanel::make("Test4 Panel", [
+                        Text::make("Field 1", "record_data->test4_field1")
+                            ->rules("required"),
+                    ])->singleRequest(true),
+
+                    Boolean::make("Test5 Boolean", "record_data->test5_boolean")->default(false),
+                    DependablePanel::make("Test5 Panel", [
+                        Text::make("Field 1", "record_data->test5_field1")
+                            ->dependsOn(["record_data->test5_boolean"], function (Text $field, NovaRequest $request, FormData $formData) {
+                                if ($formData['record_data->test5_boolean'] == true) {
+                                    $field->rules("required");
+                                }
+                            }),
+                    ])->singleRequest(true),
+
+                    Boolean::make("Test6 Boolean", "record_data->test6_boolean")->default(false),
+                    DependablePanel::make("Test6 Panel", [
+                        Text::make("Field 1", "record_data->test6_field1")
+                    ])->singleRequest(true)->separatePanel(true),
+                    Boolean::make("Test7 Boolean", "record_data->test7_boolean")->default(false),
+
                 ])->position(0),
-                Tab::make('Test Tab 2', [])->position(1),
+                Tab::make('Test Tab 2', [
+                    DependablePanel::make("Test7 Panel", [
+                        Text::make("Field 1", "record_data->test7_field1")
+                            ->dependsOn(["record_data->test7_boolean"], function (Text $field, NovaRequest $request, FormData $formData) {
+                                if ($formData['record_data->test7_boolean'] == true) {
+                                    $field->hide();
+                                }
+                            }),
+                        Text::make("Field 2", "record_data->test7_field2")
+                            ->dependsOn(["record_data->test7_boolean"], function (Text $field, NovaRequest $request, FormData $formData) {
+                                if ($formData['record_data->test7_boolean'] != true) {
+                                    $field->hide();
+                                }
+                                else {
+                                    $field->rules("required");
+                                }
+                            }),
+                    ])->singleRequest(true),
+                ])->position(1),
             ])->withToolbar(true)->showTitle(true)->withSlug("tab")->rememberTabs(true),
         ];
     }
