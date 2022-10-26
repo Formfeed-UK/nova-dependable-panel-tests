@@ -4,14 +4,24 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\FormData;
+use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 use Formfeed\DependablePanel\DependablePanel;
 use Formfeed\NovaFlexibleContent\Flexible;
 use Formfeed\NovaFlexibleContent\Concerns\HasFlexibleDependsOn;
 
-class TestTabs extends Resource
-{
+use Eminiarts\Tabs\Tabs;
+use Eminiarts\Tabs\Tab;
+use Eminiarts\Tabs\Traits\HasTabs;
+
+class TestTabs extends Resource {
+
+    use HasTabs;
+
     /**
      * The model the resource corresponds to.
      *
@@ -41,13 +51,22 @@ class TestTabs extends Resource
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function fields(NovaRequest $request)
-    {
+    public function fields(NovaRequest $request) {
         return [
-            ID::make()->sortable(),
-
-
-
+            Tabs::make(__("Test Tabs"), [
+                Tab::make('Test Tab 1', [
+                    Boolean::make("Test1 Boolean", "record_data->test4_boolean")->default(false),
+                    DependablePanel::make("Test1 Panel", [
+                        Text::make("Field 1", "record_data->test1_field1")
+                            ->dependsOn(["record_data->test1_boolean"], function (Text $field, NovaRequest $request, FormData $formData) {
+                                if ($formData['record_data->test1_boolean'] == true) {
+                                    $field->value = "test4_field1_changed";
+                                }
+                            }),
+                    ])
+                ])->position(0),
+                Tab::make('Test Tab 2', [])->position(1),
+            ])->withToolbar(true)->showTitle(true)->withSlug("tab")->rememberTabs(true),
         ];
     }
 
@@ -57,8 +76,7 @@ class TestTabs extends Resource
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function cards(NovaRequest $request)
-    {
+    public function cards(NovaRequest $request) {
         return [];
     }
 
@@ -68,8 +86,7 @@ class TestTabs extends Resource
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function filters(NovaRequest $request)
-    {
+    public function filters(NovaRequest $request) {
         return [];
     }
 
@@ -79,8 +96,7 @@ class TestTabs extends Resource
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function lenses(NovaRequest $request)
-    {
+    public function lenses(NovaRequest $request) {
         return [];
     }
 
@@ -90,8 +106,7 @@ class TestTabs extends Resource
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function actions(NovaRequest $request)
-    {
+    public function actions(NovaRequest $request) {
         return [];
     }
 }
