@@ -21,7 +21,7 @@ class UpdateTest extends DuskTestCase {
 
     protected $resource;
 
-    //use DatabaseMigrations;
+    use DatabaseMigrations;
     /**
      * A basic browser test example.
      *

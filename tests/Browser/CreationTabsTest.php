@@ -19,7 +19,7 @@ use Laravel\Nova\Testing\Browser\Pages\Detail;
  */
 class CreationTabsTest extends DuskTestCase {
 
-    //use DatabaseMigrations;
+    use DatabaseMigrations;
     /**
      * A basic browser test example.
      *
