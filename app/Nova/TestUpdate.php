@@ -192,48 +192,47 @@ class TestUpdate extends Resource {
                 Text::make('Field 2', "record_data->test10_field2")
             ])->singleRequest(true)->separatePanel(false),
 
+            Boolean::make("Test11 Boolean", "record_data->test11_boolean")->default(false),
+            DependablePanel::make('Test11', [
+                Text::make('Field 1', "record_data->test11_field1")
+                    ->dependsOn(["record_data->test11_boolean"], function (Text $field, NovaRequest $request, FormData $formData) {
+                        if ($formData['record_data->test11_boolean'] == true) {
+                            $field->readonly(true);
+                        }
+                    }),
+            ])->singleRequest(true)->separatePanel(false),
 
-            /*
-            Boolean::make("Test9 Boolean", "record_data->test9_boolean")->default(false),
-            DependablePanel::make('Test9', [
-                Text::make('Field 1', "record_data->test9_field1"),
-                Text::make('Field 2', "record_data->test9_field2"),
+            Boolean::make("Test12 Boolean", "record_data->test12_boolean")->default(false),
+            DependablePanel::make('Test12', [
+                Text::make('Field 1', "record_data->test12_field1"),
             ])
                 ->singleRequest(true)
-                ->dependsOn(["record_data->test9_boolean"], function (DependablePanel $panel, NovaRequest $request, FormData $formData) {
-                    if ($formData['record_data->test9_boolean'] == true) {
+                ->dependsOn(["record_data->test12_boolean"], function (DependablePanel $panel, NovaRequest $request, FormData $formData) {
+                    if ($formData['record_data->test12_boolean'] == true) {
                         $panel->fields([
-                            Text::make('Field 3', "record_data->test9_field3"),
-                            Text::make('Field 4', "record_data->test9_field4"),
+                            Text::make('Field 3', "record_data->test12_field2"),
                         ]);
                     }
                 }),
 
-            Boolean::make("Test10 Boolean", "record_data->test10_boolean")->default(false),
-            Boolean::make("Test10 Boolean 2", "record_data->test10_boolean2")->default(false),
-            DependablePanel::make('Test10', [
-                Text::make('Field 1', "record_data->test10_field1"),
-                Text::make('Field 2', "record_data->test10_field2"),
+            Boolean::make("Test13 Boolean", "record_data->test13_boolean")->default(false),
+            Boolean::make("Test13 Boolean 2", "record_data->test13_boolean2")->default(false),
+            DependablePanel::make('Test13', [
+                Text::make('Field 1', "record_data->test13_field1"),
             ])
                 ->singleRequest(true)
-                ->dependsOn(["record_data->test10_boolean", "record_data->test10_boolean2"], function (DependablePanel $panel, NovaRequest $request, FormData $formData) {
-                    if ($formData['record_data->test10_boolean'] == true) {
+                ->dependsOn(["record_data->test13_boolean", "record_data->test13_boolean2"], function (DependablePanel $panel, NovaRequest $request, FormData $formData) {
+                    if ($formData['record_data->test13_boolean'] == true) {
                         $panel->fields([
-                            Text::make('Field 3', "record_data->test10_field3")
-                                ->dependsOn(["record_data->test10_boolean2"], function (Text $field, NovaRequest $request, FormData $formData) {
-                                    if ($formData['record_data->test10_boolean2'] == true) {
+                            Text::make('Field 3', "record_data->test13_field2")
+                                ->dependsOn(["record_data->test13_boolean2"], function (Text $field, NovaRequest $request, FormData $formData) {
+                                    if ($formData['record_data->test13_boolean2'] == true) {
                                         $field->readonly(true);
-                                    }
-                                }),
-                            Text::make('Field 4', "record_data->test10_field4")
-                                ->dependsOn(["record_data->test10_boolean2"], function (Text $field, NovaRequest $request, FormData $formData) {
-                                    if ($formData['record_data->test10_boolean2'] == true) {
-                                        $field->rules("required");
                                     }
                                 }),
                         ]);
                     }
-                }),*/
+                }),
         ];
     }
 
