@@ -1,4 +1,0 @@
-[submodule "submodules/nova-dependable-panel"]
-	path = submodules/nova-dependable-panel
-	url = https://github.com/Formfeed-UK/nova-dependable-panel
-	branch = main
