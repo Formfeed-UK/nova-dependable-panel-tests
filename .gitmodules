@@ -1,0 +1,6 @@
+[submodule "submodules/nova-dependable-panel"]
+	path = submodules/nova-dependable-panel
+	url = https://github.com/Formfeed-UK/nova-dependable-panel
+[submodule "submodules/nova-subfield-dependson"]
+	path = submodules/nova-subfield-dependson
+	url = https://github.com/Formfeed-UK/nova-subfield-dependson
